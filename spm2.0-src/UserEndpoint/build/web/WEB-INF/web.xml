@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <security-constraint>
+        <display-name>aothorization</display-name>
+        <web-resource-collection>
+            <web-resource-name>login</web-resource-name>
+            <description>获取JWT</description>
+            <url-pattern>/api/user/login</url-pattern>
+            <http-method>OPTIONS</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>manager</role-name>
+            <role-name>student</role-name>
+            <role-name>teacher</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>securityRealm</realm-name>
+    </login-config>
+    <security-role>
+        <description/>
+        <role-name>manager</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>student</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>teacher</role-name>
+    </security-role>
+</web-app>
